@@ -15,7 +15,7 @@ class TodoController extends Controller
 	{
 		
 		
-		$todos = $this->todo->getAll();
+		$todos = $this->todo->getDesc();
 		return view('todo::todo-list', compact('todos'));
 		
 		// return json
