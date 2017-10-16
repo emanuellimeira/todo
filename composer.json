@@ -1,0 +1,26 @@
+{
+    "name": "emanuellimeira/todo",
+    "description": "A small Todo App",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emanuel Limeira",
+            "email": "emanuellimeira@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "~5"
+    },"autoload": {
+        "psr-4": {
+            "Elc\\Todo\\": "./"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Elc\\Todo\\Providers\\TodoServiceProvider"
+            ]
+        }
+    }
+}
