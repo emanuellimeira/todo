@@ -15,12 +15,5 @@
         "psr-4": {
             "Elc\\Todo\\": "./"
         }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Elc\\Todo\\Providers\\TodoServiceProvider"
-            ]
-        }
     }
 }
