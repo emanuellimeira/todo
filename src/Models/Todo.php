@@ -13,4 +13,12 @@ class Todo extends Model
     {
         return $this->belongsTo(User::class);
     }
+     /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'todo' => 'required'
+    ];
 }

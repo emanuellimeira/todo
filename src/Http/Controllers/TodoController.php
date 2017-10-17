@@ -4,6 +4,7 @@ namespace Elc\Todo\Http\Controllers;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\controller;
+use Elc\Todo\Http\Request\CreateTodoRequest;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Elc\Todo\Repositories\TodoRepositoryInterface;
 

@@ -14,6 +14,7 @@
     <br>
 
 
+
 <ul>
 	@foreach ($todos as $todo)
 	<li>{{$todo->todo}} - {{-- <a href="{{ url('todo/destroy',['id'=>$todo->id])}}" title="Excluir" class="">Excluir</a> --}} 
