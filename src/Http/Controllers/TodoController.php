@@ -64,7 +64,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        //
+        $todoShow = $this->todo->findOrFail($id);
+        dd($todoShow);
     }
 
     /**

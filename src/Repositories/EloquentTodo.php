@@ -13,6 +13,11 @@ class EloquentTodo implements TodoRepository
     	$this->model = $model;
     }
 
+    public function model()
+    {
+        return Todo::class;
+    }
+
     public function getAll()
     {
     	return $this->model->all();
