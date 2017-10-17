@@ -51,6 +51,5 @@ class EloquentTodo implements TodoRepository
         //dd($dlte);
     	$this->delete($deletar);
     	return true;
-        return redirect(route('todo.index'));
     }
 }
