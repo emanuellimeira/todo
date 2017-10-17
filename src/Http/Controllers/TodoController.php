@@ -1,28 +1,26 @@
 <?php
 namespace Elc\Todo\Http\Controllers;
 
-use Elc\Todo\Models\Todo;
+use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\controller;
-use Elc\Todo\Repositories\TodoRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Elc\Todo\Repositories\TodoRepositoryInterface;
 
 class TodoController extends Controller
 {
-	private $todo;
-	public function __construct(TodoRepository $todo)
+	private $todoRepo;
+	public function __construct(TodoRepositoryInterface $todoRepo)
 	{
-		$this->todo = $todo;
+		$this->todoRepo = $todoRepo;
 	}
 	public function index()
 	{
-		
-		
-		$todos = $this->todo->getDesc();
+        $todos = $this->todoRepo->getDesc();
 		return view('todo::index', compact('todos'));
 		
 		// return json
-		// return $this->todo->getDesc();
+		// return $this->todoRepo->getDesc();
 	}
 
 	/**
@@ -49,7 +47,7 @@ class TodoController extends Controller
 
         $input = $request->all();
 
-        $todo = $this->todo->create($input);
+        $todo = $this->todoRepo->create($input);
 
         //Flash::success('Feed saved successfully.');
 
@@ -64,8 +62,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        $todoShow = $this->todo->findOrFail($id);
-        dd($todoShow);
+        $todo = $this->todoRepo->getById($id);
+        return view('todo::show', compact('todo'));
     }
 
     /**
@@ -99,7 +97,10 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $this->todo->delete($id);
+        $this->todoRepo->delete($id);
+
+        Flash::success('Feed deleted successfully.');
+
         return redirect(route('todo.index'));
     }
 }

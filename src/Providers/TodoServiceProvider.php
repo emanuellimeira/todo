@@ -1,17 +1,17 @@
 <?php
 namespace Elc\Todo\Providers;
 
-use Elc\Todo\Repositories\EloquentTodo;
-use Elc\Todo\Repositories\TodoRepository;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+use Elc\Todo\Repositories\Eloquent\TodoRepository;
+use Elc\Todo\Repositories\TodoRepositoryInterface;
 
 class TodoServiceProvider extends ServiceProvider
 {
 	public function register()
 	{
 		//$this->app->bind('todo', function ($app){return new Todo;});
-		$this->app->singleton(TodoRepository::class, EloquentTodo::class);
+		$this->app->singleton(TodoRepositoryInterface::class, TodoRepository::class);
 	}
 	public function boot()
 	{
