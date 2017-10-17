@@ -3,6 +3,7 @@
 namespace Elc\Todo\Repositories;
 
 use Elc\Todo\Models\Todo;
+use Prettus\Repository\Criteria\RequestCriteria;
 
 class EloquentTodo implements TodoRepository
 {
@@ -41,7 +42,10 @@ class EloquentTodo implements TodoRepository
 
     public function delete($id)
     {
-    	$this->getById($id)->delete();
+        $deletar = $this->model->findOrFail($id);
+        //dd($dlte);
+    	$this->delete($deletar);
     	return true;
+        return redirect(route('todo.index'));
     }
 }

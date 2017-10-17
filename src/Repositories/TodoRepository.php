@@ -3,6 +3,9 @@
 namespace Elc\Todo\Repositories;
 
 use Elc\Todo\Models\Todo;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Illuminate\Http\Request;
+use Response;
 
 interface TodoRepository
 {

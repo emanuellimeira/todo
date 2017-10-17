@@ -2,8 +2,11 @@
 namespace Elc\Todo\Http\Controllers;
 
 use Elc\Todo\Models\Todo;
+use Illuminate\Http\Request;
 use App\Http\Controllers\controller;
 use Elc\Todo\Repositories\TodoRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+
 class TodoController extends Controller
 {
 	private $todo;
@@ -16,7 +19,7 @@ class TodoController extends Controller
 		
 		
 		$todos = $this->todo->getDesc();
-		return view('todo::todo-list', compact('todos'));
+		return view('todo::index', compact('todos'));
 		
 		// return json
 		// return $this->todo->getDesc();
@@ -29,7 +32,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todo::create');
     }
 
     /**
@@ -40,7 +43,17 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        //$t = $this->todo->create()
+        //return $request;
+
+        $input = $request->all();
+
+        $todo = $this->todo->create($input);
+
+        //Flash::success('Feed saved successfully.');
+
+        return redirect(route('todo.index'));
     }
 
     /**
@@ -85,6 +98,7 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->todo->delete($id);
+        return redirect(route('todo.index'));
     }
 }
